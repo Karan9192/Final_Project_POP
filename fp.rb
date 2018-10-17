@@ -116,9 +116,11 @@ get "/sms/incoming" do
      media = "https://media.giphy.com/media/CDpAmfo9dbOyA/giphy.gif"
   else
 
+if media_url == "none"
+      message, media = determine_response body
 
-    if media_url == "none"
-      media = call_face_api media_url
+    else
+      message, media = call_face_api media_url
     end
 
   end
@@ -248,28 +250,18 @@ def determine_response body
   # value = call_face_api
   # puts "Highest Emotion is #{value}"
 
-  Tmdb::Api.key("aa73605e3dfbc5266697038b580c3678")
 
   if body.include?( "comedy") || body.include?("happy")
-    response = Tmdb::Genre.movies(35) #35 is the ID for comedy
+    response = "You could use some junk food!"
 
   elsif body.include?( "drama" )|| body.include?( "sad")
-    response = Tmdb::Genre.movies(18)
+    response = "You could use some ice cream!"
 
   elsif body == 'yes'
 
   end
 
-    number = rand(19)
-
-    puts response.results[number]
-
-    title = response['results'][number]["original_title"]
-    poster = response['results'][number]["poster_path"]
-
-    media = 'https://image.tmdb.org/t/p/w1280' + poster.to_s
-    message = 'One option I have for you is ' + title + '. If you want another option, type [yes].'
-    return message, media
+    return 
 end
 
 

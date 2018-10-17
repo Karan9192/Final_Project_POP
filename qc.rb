@@ -107,7 +107,6 @@ get "/sms/incoming" do
   session["counter"] ||= 1
   imageEmotion = 'empty'
   body = params[:Body] || "Hello!"
-  sender = "Karan"
   media_content = params[:MediaContentType0] || "none"
   media_url = params[:MediaUrl0] || "none"
 

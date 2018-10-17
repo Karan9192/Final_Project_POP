@@ -118,12 +118,7 @@ get "/sms/incoming" do
 
 
     if media_url == "none"
-      message = "Hey! I'm NomNom. Looks like you're hungry. Send me a selfie for some food recommendations"
-      media = "https://media.giphy.com/media/CDpAmfo9dbOyA/giphy.gif"
-
-    else
-      message = "Hey! I'm NomNom. Looks like you're hungry. Send me a selfie for some food recommendations"
-      media = "https://media.giphy.com/media/CDpAmfo9dbOyA/giphy.gif"
+      media = call_face_api media_url
     end
 
   end

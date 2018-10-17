@@ -217,22 +217,15 @@ def call_face_api media_url
   searchEmotion = emotions.max_by{|k,v| v}[0]
 
   if searchEmotion == "happiness"
-    response = Tmdb::Genre.movies(35)
-    puts 'selecting a comedy'
+   message = "Looks like you just ate some pizza!"
+   media = 'https://media.giphy.com/media/hmzAcor7gBsbK/giphy.gif'
 
   elsif seachEmotion == "sadness"
-    response = Tmdb::Genre.movies(18)
-    puts 'selecting a drama'
+    message = "They say ice cream is the best anti-depressant!"
+   media = 'https://media.giphy.com/media/tm8r2aEXf6h1u/giphy.gif'
 
   end
 
-  number = rand(19)
-
-  title = response['results'][number]["original_title"]
-  poster = response['results'][number]["poster_path"]
-
-  media = 'https://image.tmdb.org/t/p/w1280' + poster
-  message = 'One option I have for you is ' + title + '. If you want another option, type [yes].'
 
   return message, media
 
